@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { Facebook, MessageCircle, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -22,16 +22,16 @@ export function Footer() {
               jobs at top tech companies.
             </p>
             <div className="flex space-x-4">
-              <Link to="#" className="text-primary-200 hover:text-white transition-colors">
+              <Link to="https://www.facebook.com/p/FAANG-Tech-Lab-61563588312882/" className="text-primary-200 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                 <Facebook className="h-5 w-5" />
               </Link>
-              <Link to="#" className="text-primary-200 hover:text-white transition-colors">
-                <Twitter className="h-5 w-5" />
+              <Link to="https://api.whatsapp.com/send?phone=918179423238&text=Hi,%20I%20want%20more%20details%20about%20FAANG%20Tech%20Lab%20courses" className="text-primary-200 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-5 w-5" />
               </Link>
-              <Link to="#" className="text-primary-200 hover:text-white transition-colors">
+              <Link to="https://www.linkedin.com/in/faang-tech-lab-043855349/" className="text-primary-200 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
               </Link>
-              <Link to="#" className="text-primary-200 hover:text-white transition-colors">
+              <Link to="https://www.instagram.com/faangtechlab?igsh=N3BienRqY3lxeW10" className="text-primary-200 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-5 w-5" />
               </Link>
             </div>
@@ -107,18 +107,18 @@ export function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary-200" />
-                <span className="text-primary-200">info@faangtechlab.com</span>
+                <span className="text-primary-200">learn@faangtechlab.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-primary-200" />
-                <span className="text-primary-200">+1 (555) 123-4567</span>
+                <span className="text-primary-200">+91 99089 70375</span>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 text-primary-200 mt-0.5" />
                 <span className="text-primary-200">
-                  123 Tech Street
+                  Lakshmipuram Main Road,
                   <br />
-                  San Francisco, CA 94105
+                  Guntur, Andhra Pradesh
                 </span>
               </div>
             </div>

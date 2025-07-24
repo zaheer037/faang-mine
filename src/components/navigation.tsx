@@ -80,19 +80,19 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full nav-backdrop shadow-xl border-b-2 border-primary-100">
       <div className="container flex h-16 items-center justify-between py-2">
         <Link to="/" className="flex items-center space-x-4 group logo-hover">
-          <div className="relative w-20 h-12 overflow-hidden">
+          <div className="relative w-28 h-14 overflow-hidden">
             <img
               src="/images/faang-logo-svg.jpeg"
               alt="FAANG Tech Lab"
               className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
             />
           </div>
-          <div className="hidden lg:block">
+          {/* <div className="hidden lg:block">
             <h1 className="text-xl font-bold text-primary-800 group-hover:text-primary-600 transition-colors">
               FAANG Tech Lab
             </h1>
             <p className="text-sm text-primary-600 font-medium">Code Your Future</p>
-          </div>
+          </div> */}
         </Link>
 
         {/* Desktop Navigation */}
@@ -102,8 +102,8 @@ export function Navigation() {
               <Link to="/">
                 <NavigationMenuLink
                   className={cn(
-                    "nav-link group inline-flex h-10 w-max items-center justify-center rounded-lg bg-background px-5 py-2 text-sm font-semibold transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 border-2 border-transparent hover:border-accent shadow-md hover:shadow-lg",
-                    isActive("/") && "bg-accent/50 border-accent text-accent-foreground nav-item-active",
+                    "nav-link group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-accent-600 hover:bg-accent/10 rounded-md",
+                    isActive("/") && "text-accent-600 bg-accent/10",
                   )}
                 >
                   Home
@@ -115,8 +115,8 @@ export function Navigation() {
               <Link to="/about">
                 <NavigationMenuLink
                   className={cn(
-                    "nav-link group inline-flex h-10 w-max items-center justify-center rounded-lg bg-background px-5 py-2 text-sm font-semibold transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 border-2 border-transparent hover:border-accent shadow-md hover:shadow-lg",
-                    isActive("/about") && "bg-accent/50 border-accent text-accent-foreground nav-item-active",
+                    "nav-link group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-accent-600 hover:bg-accent/10 rounded-md",
+                    isActive("/about") && "text-accent-600 bg-accent/10",
                   )}
                 >
                   About
@@ -127,8 +127,8 @@ export function Navigation() {
             <NavigationMenuItem>
               <Link to="/courses">
                 <NavigationMenuLink className={cn(
-                  "nav-link group inline-flex h-10 w-max items-center justify-center rounded-lg bg-background px-5 py-2 text-sm font-semibold transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 border-2 border-transparent hover:border-accent shadow-md hover:shadow-lg",
-                  isActive("/courses") && "bg-accent/50 border-accent text-accent-foreground nav-item-active",
+                  "nav-link group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-accent-600 hover:bg-accent/10 rounded-md",
+                  isActive("/courses") && "text-accent-600 bg-accent/10",
                 )}>
                   Courses
                 </NavigationMenuLink>
@@ -136,7 +136,7 @@ export function Navigation() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="nav-link h-10 px-5 py-2 text-sm font-semibold rounded-lg border-2 border-transparent hover:border-accent hover:scale-105 transition-all duration-200 shadow-md hover:shadow-lg">
+              <NavigationMenuTrigger className="nav-link h-10 px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-accent-600 hover:bg-accent/10 rounded-md bg-transparent data-[state=open]:bg-accent/10 data-[state=open]:text-accent-600">
                 Resources
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -146,7 +146,7 @@ export function Navigation() {
                       <NavigationMenuLink asChild>
                         <Link
                           to={resource.href}
-                          className="block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground hover:scale-105 border border-transparent hover:border-accent"
+                          className="block select-none space-y-2 rounded-lg p-4 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent/10 hover:text-accent-600 focus:bg-accent/10 focus:text-accent-600 border border-transparent hover:border-accent/20"
                         >
                           <div className="text-base font-semibold leading-none">{resource.title}</div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
@@ -164,8 +164,8 @@ export function Navigation() {
               <Link to="/blog">
                 <NavigationMenuLink
                   className={cn(
-                    "nav-link group inline-flex h-10 w-max items-center justify-center rounded-lg bg-background px-5 py-2 text-sm font-semibold transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 border-2 border-transparent hover:border-accent shadow-md hover:shadow-lg",
-                    isActive("/blog") && "bg-accent/50 border-accent text-accent-foreground nav-item-active",
+                    "nav-link group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-accent-600 hover:bg-accent/10 rounded-md",
+                    isActive("/blog") && "text-accent-600 bg-accent/10",
                   )}
                 >
                   Blog
@@ -177,8 +177,8 @@ export function Navigation() {
               <Link to="/contact">
                 <NavigationMenuLink
                   className={cn(
-                    "nav-link group inline-flex h-10 w-max items-center justify-center rounded-lg bg-background px-5 py-2 text-sm font-semibold transition-all duration-200 hover:bg-accent hover:text-accent-foreground hover:scale-105 focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 border-2 border-transparent hover:border-accent shadow-md hover:shadow-lg",
-                    isActive("/contact") && "bg-accent/50 border-accent text-accent-foreground nav-item-active",
+                    "nav-link group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-accent-600 hover:bg-accent/10 rounded-md",
+                    isActive("/contact") && "text-accent-600 bg-accent/10",
                   )}
                 >
                   Contact
@@ -194,7 +194,7 @@ export function Navigation() {
             size="lg"
             className="hidden md:inline-flex enhanced-nav-button text-white font-bold px-8 py-3 text-base hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl rounded-lg border-2 border-accent-300 nav-glow"
           >
-            <Link to="/contact">🚀 Enroll Now</Link>
+            <Link to="/contact">Enroll Now</Link>
           </Button>
 
           {/* Mobile Navigation */}
@@ -212,13 +212,13 @@ export function Navigation() {
                   className="flex items-center space-x-4 text-xl font-bold border-b border-primary-100 pb-4"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="relative w-20 h-14 overflow-hidden">
+                  <div className="relative w-28 h-16 overflow-hidden">
                     <img src="/images/faang-logo-svg.jpeg" alt="FAANG Tech Lab" className="w-full h-full object-contain" />
                   </div>
-                  <div>
+                  {/* <div>
                     <h1 className="text-primary-800">FAANG Tech Lab</h1>
                     <p className="text-sm text-primary-600 font-medium">Code Your Future</p>
-                  </div>
+                  </div> */}
                 </Link>
                 <div className="flex flex-col space-y-4">
                   <Link 
@@ -295,7 +295,7 @@ export function Navigation() {
                     className="mt-6 enhanced-nav-button text-white font-bold text-lg py-4 shadow-lg rounded-lg"
                   >
                     <Link to="/contact" onClick={() => setIsOpen(false)}>
-                      🚀 Enroll Now
+                      Enroll Now
                     </Link>
                   </Button>
                 </div>

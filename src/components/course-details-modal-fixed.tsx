@@ -93,7 +93,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Sarah Chen",
+      name: "Chandana Velagam",
       title: "Senior Full Stack Engineer at Meta",
       experience: "8+ years at Facebook, Google"
     },
@@ -143,7 +143,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Michael Rodriguez",
+      name: "Chandana Velagam",
       title: "Lead Developer at Netflix",
       experience: "6+ years at Netflix, Airbnb"
     },
@@ -193,7 +193,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Alex Thompson",
+      name: "Chandana Velagam",
       title: "Senior Angular Developer at Microsoft",
       experience: "7+ years at Microsoft, IBM"
     },
@@ -243,7 +243,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "David Kim",
+      name: "Chandana Velagam",
       title: "Staff Engineer at Google",
       experience: "10+ years at Google, Amazon"
     },
@@ -293,7 +293,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Emily Johnson",
+      name: "Chandana Velagam",
       title: "Computer Science Education Specialist",
       experience: "5+ years teaching kids programming"
     },
@@ -343,7 +343,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Rajesh Patel",
+      name: "Chandana Velagam",
       title: "Senior Java Architect",
       experience: "12+ years in enterprise Java development"
     },
@@ -393,7 +393,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Dr. Sarah Chen",
+      name: "Chandana Velagam",
       title: "Python Expert & Data Scientist",
       experience: "8+ years in Python development and ML"
     },
@@ -443,7 +443,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Dr. Alex Rodriguez",
+      name: "Chandana Velagam",
       title: "Senior Data Scientist at Meta",
       experience: "10+ years in data science and ML"
     },
@@ -493,7 +493,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Mike Thompson",
+      name: "Chandana Velagam",
       title: "Senior Mobile Developer",
       experience: "8+ years in mobile app development"
     },
@@ -543,7 +543,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "James Wilson",
+      name: "Chandana Velagam",
       title: "DevOps Principal Engineer",
       experience: "12+ years in DevOps and cloud architecture"
     },
@@ -593,7 +593,7 @@ const courseDatabase: Record<string, CourseData> = {
       }
     ],
     instructor: {
-      name: "Lisa Park",
+      name: "Chandana Velagam",
       title: "Senior UX Designer at Airbnb",
       experience: "9+ years in product design at top tech companies"
     },

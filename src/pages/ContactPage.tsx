@@ -1,3 +1,18 @@
+/*
+ * Formspree Integration Setup:
+ * 1. Go to https://formspree.io and create a free account
+ * 2. Create a new form and get your form ID (it looks like: YOUR_FORM_ID)
+ * 3. Replace "YOUR_FORM_ID" in the formspreeEndpoint variable below
+ * 4. Example: "https://formspree.io/f/xpzgkwqr"
+ * 
+ * Formspree Features:
+ * - Free tier: 50 submissions/month
+ * - Email notifications
+ * - Spam protection
+ * - Form validation
+ * - Dashboard to view submissions
+ */
+
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
@@ -10,6 +25,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { ParticleBackground } from "@/components/ui/particle-background"
 import { InteractiveCard } from "@/components/ui/interactive-card"
+import { CustomCaptcha } from "@/components/ui/custom-captcha"
 import {
   Mail,
   Phone,
@@ -39,6 +55,7 @@ export default function ContactPage() {
     message: "",
     newsletter: false,
     terms: false,
+    captchaVerified: false,
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -47,15 +64,57 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
+  const handleCaptchaVerify = (verified: boolean) => {
+    setFormData((prev) => ({ ...prev, captchaVerified: verified }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!formData.captchaVerified) {
+      alert("Please complete the verification challenge.")
+      return
+    }
+
     setIsSubmitting(true)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      // Formspree submission
+      const formspreeEndpoint = "https://formspree.io/f/mvgqaonj" // Replace with your actual Formspree form ID
+      
+      const response = await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          course: formData.course,
+          experience: formData.experience,
+          goals: formData.goals,
+          timeline: formData.timeline,
+          message: formData.message,
+          newsletter: formData.newsletter,
+          // Note: Don't send sensitive data like captcha verification to external services
+          _subject: `New Application from ${formData.firstName} ${formData.lastName}`,
+          _replyto: formData.email,
+        }),
+      })
 
-    setIsSubmitted(true)
-    setIsSubmitting(false)
+      if (response.ok) {
+        setIsSubmitted(true)
+      } else {
+        throw new Error("Failed to submit form")
+      }
+    } catch (error) {
+      console.error("Form submission error:", error)
+      alert("There was an error submitting your application. Please try again or contact us directly.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -146,8 +205,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary-800 mb-1">Phone</h3>
-                    <p className="text-neutral-600">+1 (555) 123-FAANG</p>
-                    <p className="text-sm text-neutral-500">Mon-Fri, 9AM-6PM PST</p>
+                    <p className="text-neutral-600">+91 99089 70375</p>
+                    <p className="text-sm text-neutral-500">Mon-Sat, 9AM-6PM PST</p>
                   </div>
                 </div>
 
@@ -157,7 +216,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary-800 mb-1">Email</h3>
-                    <p className="text-neutral-600">admissions@faangtechlab.com</p>
+                    <p className="text-neutral-600">learn@faangtechlab.com</p>
                     <p className="text-sm text-neutral-500">We respond within 24 hours</p>
                   </div>
                 </div>
@@ -168,8 +227,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-primary-800 mb-1">Locations</h3>
-                    <p className="text-neutral-600">San Francisco, CA</p>
-                    <p className="text-neutral-600">New York, NY</p>
+                    <p className="text-neutral-600">Lakshmipuram Main Road,</p>
+                    <p className="text-neutral-600">Guntur, Andhra Pradesh (1st floor)</p>
                     <p className="text-sm text-neutral-500">+ Online Programs</p>
                   </div>
                 </div>
@@ -223,6 +282,11 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Hidden fields for Formspree configuration */}
+                    <input type="hidden" name="_subject" value="New FAANG Tech Lab Application" />
+                    <input type="hidden" name="_next" value={window.location.origin + "/contact"} />
+                    <input type="hidden" name="_captcha" value="false" />
+                    
                     {/* Personal Information */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
@@ -231,6 +295,7 @@ export default function ContactPage() {
                         </Label>
                         <Input
                           id="firstName"
+                          name="firstName"
                           value={formData.firstName}
                           onChange={(e) => handleInputChange("firstName", e.target.value)}
                           className="mt-1"
@@ -243,6 +308,7 @@ export default function ContactPage() {
                         </Label>
                         <Input
                           id="lastName"
+                          name="lastName"
                           value={formData.lastName}
                           onChange={(e) => handleInputChange("lastName", e.target.value)}
                           className="mt-1"
@@ -258,6 +324,7 @@ export default function ContactPage() {
                         </Label>
                         <Input
                           id="email"
+                          name="email"
                           type="email"
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
@@ -271,6 +338,7 @@ export default function ContactPage() {
                         </Label>
                         <Input
                           id="phone"
+                          name="phone"
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
@@ -285,7 +353,7 @@ export default function ContactPage() {
                       <Label htmlFor="course" className="text-primary-800">
                         Which course are you interested in? *
                       </Label>
-                      <Select onValueChange={(value) => handleInputChange("course", value)}>
+                      <Select name="course" onValueChange={(value) => handleInputChange("course", value)}>
                         <SelectTrigger className="mt-1">
                           <SelectValue placeholder="Select a course" />
                         </SelectTrigger>
@@ -306,7 +374,7 @@ export default function ContactPage() {
                       <Label htmlFor="experience" className="text-primary-800">
                         Current Experience Level *
                       </Label>
-                      <Select onValueChange={(value) => handleInputChange("experience", value)}>
+                      <Select name="experience" onValueChange={(value) => handleInputChange("experience", value)}>
                         <SelectTrigger className="mt-1">
                           <SelectValue placeholder="Select your experience level" />
                         </SelectTrigger>
@@ -326,7 +394,7 @@ export default function ContactPage() {
                       <Label htmlFor="timeline" className="text-primary-800">
                         When would you like to start? *
                       </Label>
-                      <Select onValueChange={(value) => handleInputChange("timeline", value)}>
+                      <Select name="timeline" onValueChange={(value) => handleInputChange("timeline", value)}>
                         <SelectTrigger className="mt-1">
                           <SelectValue placeholder="Select your preferred start time" />
                         </SelectTrigger>
@@ -347,6 +415,7 @@ export default function ContactPage() {
                       </Label>
                       <Textarea
                         id="goals"
+                        name="goals"
                         value={formData.goals}
                         onChange={(e) => handleInputChange("goals", e.target.value)}
                         placeholder="Tell us about your career aspirations, target companies, or specific roles you're interested in..."
@@ -363,6 +432,7 @@ export default function ContactPage() {
                       </Label>
                       <Textarea
                         id="message"
+                        name="message"
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
                         placeholder="Any specific questions about our programs, financing options, or anything else we should know?"
@@ -376,6 +446,7 @@ export default function ContactPage() {
                       <div className="flex items-start space-x-3">
                         <Checkbox
                           id="newsletter"
+                          name="newsletter"
                           checked={formData.newsletter}
                           onCheckedChange={(checked) => handleInputChange("newsletter", checked as boolean)}
                         />
@@ -387,6 +458,7 @@ export default function ContactPage() {
                       <div className="flex items-start space-x-3">
                         <Checkbox
                           id="terms"
+                          name="terms"
                           checked={formData.terms}
                           onCheckedChange={(checked) => handleInputChange("terms", checked as boolean)}
                           required
@@ -405,12 +477,17 @@ export default function ContactPage() {
                       </div>
                     </div>
 
+                    {/* Captcha Verification */}
+                    <div className="space-y-4">
+                      <CustomCaptcha onVerify={handleCaptchaVerify} />
+                    </div>
+
                     {/* Submit Button */}
                     <Button
                       type="submit"
                       size="lg"
                       className="w-full bg-accent hover:bg-accent-600 text-accent-900 text-lg py-6"
-                      disabled={isSubmitting || !formData.terms}
+                      disabled={isSubmitting || !formData.terms || !formData.captchaVerified}
                     >
                       {isSubmitting ? (
                         <>

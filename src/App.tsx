@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
+import { AIChatbot } from '@/components/ai-chatbot'
 import HomePage from '@/pages/HomePage'
 import AboutPage from '@/pages/AboutPage'
 import BlogPage from '@/pages/BlogPage'
@@ -34,6 +35,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <AIChatbot />
       </div>
     </Router>
   )

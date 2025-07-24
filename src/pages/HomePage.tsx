@@ -371,7 +371,7 @@ export default function HomePage() {
               <div className="text-primary-100">Job Placement Rate</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-accent-300 mb-2">$120K</div>
+              <div className="text-4xl font-bold text-accent-300 mb-2">8 LPA</div>
               <div className="text-primary-100">Average Starting Salary</div>
             </div>
             <div className="text-center">

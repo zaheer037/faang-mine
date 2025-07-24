@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react"
+import { useState, useMemo } from "react"
 import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -207,13 +207,18 @@ export default function BlogPage() {
           <div className="max-w-4xl mx-auto">
             {/* Search Bar */}
             <div className="relative mb-12">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400" />
-              <Input
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-neutral-400 transition-colors duration-200" />
+              <input
                 type="text"
                 placeholder="Search articles by title, content, or tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 py-6 text-lg border-primary-200 focus:border-accent-500"
+                className="w-full pl-10 py-6 text-lg rounded-lg border border-neutral-200 bg-white/80 backdrop-blur-sm
+                         placeholder:text-neutral-400 text-neutral-700
+                         hover:border-primary-300 hover:bg-white/90
+                         focus:outline-none focus:border-primary-400 focus:bg-white 
+                         focus:shadow-lg focus:shadow-primary-100/50
+                         transition-all duration-300 ease-in-out"
               />
             </div>
 
@@ -260,58 +265,64 @@ export default function BlogPage() {
           {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.filter(post => !post.featured).map((post) => (
-                <InteractiveCard key={post.id} className="bg-white border-primary-100 h-full">
+                <InteractiveCard key={post.id} className="bg-white border-primary-100 h-full flex flex-col">
                   <div className="relative h-48 overflow-hidden rounded-t-lg">
                     <img
                       src={post.image}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
                     />
                     <Badge className="absolute top-3 left-3 bg-primary-100 text-primary-800 text-xs">
                       {post.category}
                     </Badge>
                   </div>
                   
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center space-x-4 text-xs text-neutral-500 mb-2">
-                      <div className="flex items-center space-x-1">
-                        <User className="h-3 w-3" />
-                        <span>{post.author}</span>
+                  <div className="flex flex-col flex-grow">
+                    <CardHeader className="pb-4 flex-shrink-0">
+                      <div className="flex items-center justify-between text-xs text-neutral-500 mb-3">
+                        <div className="flex items-center space-x-1">
+                          <User className="h-3 w-3" />
+                          <span className="truncate">{post.author}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <Clock className="h-3 w-3" />
+                          <span>{post.readTime}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center space-x-1">
+                      
+                      <div className="flex items-center space-x-1 text-xs text-neutral-500 mb-3">
                         <Calendar className="h-3 w-3" />
                         <span>{new Date(post.date).toLocaleDateString()}</span>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <Clock className="h-3 w-3" />
-                        <span>{post.readTime}</span>
+                      
+                      <CardTitle className="text-lg text-primary-800 leading-tight line-clamp-2 min-h-[3.5rem] flex items-start">
+                        {post.title}
+                      </CardTitle>
+                    </CardHeader>
+                    
+                    <CardContent className="pt-0 flex flex-col flex-grow justify-between">
+                      <div className="flex-grow">
+                        <p className="text-neutral-600 text-sm mb-4 line-clamp-3 leading-relaxed min-h-[4.5rem]">
+                          {post.excerpt}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-1 mb-6 min-h-[2rem]">
+                          {post.tags.slice(0, 3).map((tag) => (
+                            <Badge key={tag} variant="outline" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                    
-                    <CardTitle className="text-lg text-primary-800 leading-tight line-clamp-2">
-                      {post.title}
-                    </CardTitle>
-                  </CardHeader>
-                  
-                  <CardContent className="pt-0">
-                    <p className="text-neutral-600 text-sm mb-4 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    
-                    <Button asChild variant="outline" className="w-full border-accent-300 text-accent-700 hover:bg-accent-50">
-                      <Link to={`/blog/${post.id}`}>
-                        Read More <ArrowRight className="ml-2 h-3 w-3" />
-                      </Link>
-                    </Button>
-                  </CardContent>
+                      
+                      <Button asChild variant="outline" className="w-full border-accent-300 text-accent-700 hover:bg-accent-50 mt-auto">
+                        <Link to={`/blog/${post.id}`}>
+                          Read More <ArrowRight className="ml-2 h-3 w-3" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </div>
                 </InteractiveCard>
               ))}
             </div>
