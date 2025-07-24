@@ -1,7 +1,4 @@
-"use client"
-
 import { useState, useEffect, useCallback } from "react"
-import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react"
@@ -121,18 +118,13 @@ export function TestimonialCarousel() {
                 <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-lg bg-gray-100">
                   {/* Render all images but only show current one */}
                   {testimonials.map((testimonial, index) => (
-                    <Image
+                    <img
                       key={testimonial.id}
                       src={testimonial.image}
                       alt={testimonial.name}
-                      width={96}
-                      height={96}
                       className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-300 ${
                         index === currentIndex ? 'opacity-100' : 'opacity-0'
                       }`}
-                      priority={index <= 1} // Priority load for first two images
-                      placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       onError={(e) => {
                         const target = e.currentTarget;
                         target.src = "/placeholder-user.jpg"

@@ -1,5 +1,4 @@
-import Link from "next/link"
-import Image from "next/image"
+import { Link } from 'react-router-dom'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -15,7 +14,6 @@ import {
   Award,
   TrendingUp,
   Clock,
-  Star,
 } from "lucide-react"
 
 import { ParticleBackground } from "@/components/ui/particle-background"
@@ -37,9 +35,6 @@ export default function HomePage() {
           <div className="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-4 animate-fade-in">
               <div className="space-y-1">
-                {/* <Badge className="bg-secondary text-secondary-900 hover:bg-secondary-400 animate-bounce-in">
-                  🚀 Launch Your Tech Career
-                </Badge> */}
                 <h2 className="text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl lg:text-6xl">
                   Master Coding Skills for{" "}
                   <TypingAnimation
@@ -61,7 +56,7 @@ export default function HomePage() {
                   size="lg"
                   className="bg-accent hover:bg-accent-600 text-accent-900 text-lg px-8 py-6 hover:scale-105 transition-transform"
                 >
-                  <Link href="/contact">
+                  <Link to="/contact">
                     Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -71,7 +66,7 @@ export default function HomePage() {
                   size="lg"
                   className="text-lg px-8 py-6 border-primary-300 text-primary-700 hover:bg-primary-50 bg-transparent hover:scale-105 transition-transform"
                 >
-                  <Link href="/courses">Explore Courses</Link>
+                  <Link to="/courses">Explore Courses</Link>
                 </Button>
               </div>
 
@@ -99,12 +94,10 @@ export default function HomePage() {
 
             <div className="relative animate-slide-in">
               <div className="relative">
-                <Image
+                <img
                   src="/images/Faang_pictures/AP1traininginstutute.jpg"
                   alt="Full Stack Developer Training"
-                  width={600}
-                  height={600}
-                  className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500 object-cover"
+                  className="w-full h-auto rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500 object-cover"
                 />
                 <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg animate-float">
                   <div className="flex items-center space-x-2">
@@ -226,108 +219,105 @@ export default function HomePage() {
             </p>
           </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-  {/* Full Stack Web Development Card */}
-  <Card className="bg-white border-primary-100 hover:shadow-xl transition-all duration-300">
-    <div className="relative w-full h-80 overflow-hidden rounded-t-lg">
-      <Image
-        src="/images/Faang_pictures/homefullstack.jpeg"
-        alt="MERN Stack Development"
-        fill
-        className="object-contain w-full h-full object-center"
-      />
-    </div>
-    <CardHeader>
-      <div className="flex items-center justify-between">
-        <Badge className="bg-accent-100 text-accent-800">Most Popular</Badge>
-        <div className="text-right">
-          <div className="text-2xl font-bold text-primary-800">16 weeks</div>
-          <div className="text-sm text-neutral-600">Full-time</div>
-        </div>
-      </div>
-      <CardTitle className="text-2xl text-primary-800">Full Stack Web Development</CardTitle>
-      <CardDescription className="text-lg">
-        Master modern web technologies including React, Node.js, databases, and cloud deployment.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div className="space-y-4">
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>Frontend: React, TypeScript, Next.js</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>Backend: Node.js, Express, PostgreSQL</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>DevOps: AWS, Docker, CI/CD</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>5+ Portfolio Projects</span>
-        </div>
-        <Button asChild className="w-full mt-6 bg-accent hover:bg-accent-600 text-accent-900">
-          <Link href="/courses#fullstack">
-            Learn More <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-      </div>
-    </CardContent>
-  </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Full Stack Web Development Card */}
+            <Card className="bg-white border-primary-100 hover:shadow-xl transition-all duration-300">
+              <div className="relative w-full h-80 overflow-hidden rounded-t-lg">
+                <img
+                  src="/images/Faang_pictures/homefullstack.jpeg"
+                  alt="MERN Stack Development"
+                  className="w-full h-full object-contain object-center"
+                />
+              </div>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <Badge className="bg-accent-100 text-accent-800">Most Popular</Badge>
+                  <div className="text-right">
+                    <div className="text-2xl font-bold text-primary-800">16 weeks</div>
+                    <div className="text-sm text-neutral-600">Full-time</div>
+                  </div>
+                </div>
+                <CardTitle className="text-2xl text-primary-800">Full Stack Web Development</CardTitle>
+                <CardDescription className="text-lg">
+                  Master modern web technologies including React, Node.js, databases, and cloud deployment.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>Frontend: React, TypeScript, Next.js</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>Backend: Node.js, Express, PostgreSQL</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>DevOps: AWS, Docker, CI/CD</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>5+ Portfolio Projects</span>
+                  </div>
+                  <Button asChild className="w-full mt-6 bg-accent hover:bg-accent-600 text-accent-900">
+                    <Link to="/courses#fullstack">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
 
-  {/* Data Science & Machine Learning Card */}
-  <Card className="bg-white border-primary-100 hover:shadow-xl transition-all duration-300">
-    <div className="relative w-full h-80 overflow-hidden rounded-t-lg">
-      <Image
-        src="/images/Faang_pictures/homeML.jpeg"
-        alt="Data Science & Analytics"
-        fill
-        className="object-contain w-full h-full object-center"
-      />
-    </div>
-    <CardHeader>
-      <div className="flex items-center justify-between">
-        <Badge className="bg-secondary-100 text-secondary-800">High Demand</Badge>
-        <div className="text-right">
-          <div className="text-2xl font-bold text-primary-800">20 weeks</div>
-          <div className="text-sm text-neutral-600">Part-time</div>
-        </div>
-      </div>
-      <CardTitle className="text-2xl text-primary-800">Data Science & Machine Learning</CardTitle>
-      <CardDescription className="text-lg">
-        Learn Python, machine learning algorithms, and data analysis techniques used by top tech companies.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <div className="space-y-4">
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>Python, Pandas, NumPy, Scikit-learn</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>Machine Learning & Deep Learning</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>Data Visualization & Statistics</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <CheckCircle className="h-5 w-5 text-accent-600" />
-          <span>Real-world Data Projects</span>
-        </div>
-        <Button asChild className="w-full mt-6 bg-accent hover:bg-accent-600 text-accent-900">
-          <Link href="/courses#datascience">
-            Learn More <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-      </div>
-    </CardContent>
-  </Card>
-</div>
-
+            {/* Data Science & Machine Learning Card */}
+            <Card className="bg-white border-primary-100 hover:shadow-xl transition-all duration-300">
+              <div className="relative w-full h-80 overflow-hidden rounded-t-lg">
+                <img
+                  src="/images/Faang_pictures/homeML.jpeg"
+                  alt="Data Science & Analytics"
+                  className="w-full h-full object-contain object-center"
+                />
+              </div>
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <Badge className="bg-secondary-100 text-secondary-800">High Demand</Badge>
+                  <div className="text-right">
+                    <div className="text-2xl font-bold text-primary-800">20 weeks</div>
+                    <div className="text-sm text-neutral-600">Part-time</div>
+                  </div>
+                </div>
+                <CardTitle className="text-2xl text-primary-800">Data Science & Machine Learning</CardTitle>
+                <CardDescription className="text-lg">
+                  Learn Python, machine learning algorithms, and data analysis techniques used by top tech companies.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>Python, Pandas, NumPy, Scikit-learn</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>Machine Learning & Deep Learning</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>Data Visualization & Statistics</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-accent-600" />
+                    <span>Real-world Data Projects</span>
+                  </div>
+                  <Button asChild className="w-full mt-6 bg-accent hover:bg-accent-600 text-accent-900">
+                    <Link to="/courses#datascience">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           <div className="text-center mt-12">
             <Button
@@ -336,7 +326,7 @@ export default function HomePage() {
               size="lg"
               className="border-primary-300 text-primary-700 hover:bg-primary-50 bg-transparent"
             >
-              <Link href="/courses">
+              <Link to="/courses">
                 View All Courses <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -407,7 +397,7 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button asChild size="lg" className="bg-accent hover:bg-accent-600 text-accent-900 text-lg px-8 py-6">
-                <Link href="/contact">
+                <Link to="/contact">
                   Enroll Now - Limited Spots <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -417,10 +407,10 @@ export default function HomePage() {
                 size="lg"
                 className="text-lg px-8 py-6 border-primary-300 text-primary-700 hover:bg-primary-50 bg-transparent"
               >
-                <Link href="/courses">Browse Courses</Link>
+                <Link to="/courses">Browse Courses</Link>
               </Button>
             </div>
-{/* blob:https://web.whatsapp.com/f38be967-f19a-44f8-8d45-e635a9f95e83 */}
+
             <div className="flex items-center justify-center space-x-8 pt-8">
               <div className="flex items-center space-x-2">
                 <Clock className="h-5 w-5 text-accent-600" />
