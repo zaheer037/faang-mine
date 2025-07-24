@@ -8,6 +8,10 @@ import BlogPostPage from '@/pages/BlogPostPage'
 import ContactPage from '@/pages/ContactPage'
 import CoursesPage from '@/pages/CoursesPage'
 import PortalPage from '@/pages/PortalPage'
+import CareerGuidePage from '@/pages/CareerGuidePage'
+import ChallengesPage from '@/pages/ChallengesPage'
+import InterviewQuestionsPage from '@/pages/InterviewQuestionsPage'
+import SalaryGuidePage from '@/pages/SalaryGuidePage'
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/portal" element={<PortalPage />} />
+            <Route path="/resources/career-guide" element={<CareerGuidePage />} />
+            <Route path="/resources/challenges" element={<ChallengesPage />} />
+            <Route path="/resources/interview-questions" element={<InterviewQuestionsPage />} />
+            <Route path="/resources/salary-guide" element={<SalaryGuidePage />} />
           </Routes>
         </main>
         <Footer />
